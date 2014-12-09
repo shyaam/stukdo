@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
-  resources :tasks
+  resources :tasks do
+    member do
+      put :change
+    end
+  end
 
   devise_for :users
   root 'pages#home'
